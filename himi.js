@@ -62,7 +62,7 @@ inputIds.forEach(function(id) {
 				outputArea.innerText = outputArea.innerText+"》";
 				}
 			}
-			outputArea.innerText=outputArea.innerText+"\n\nひみったーで暗号化済。"
+			outputArea.innerText=outputArea.innerText+"\n\nひみったー(https://murohiromu.github.io/himi.html)で暗号化済。"
 			
 			
 		}
