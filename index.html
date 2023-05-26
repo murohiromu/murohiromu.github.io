@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ひみったー</title>
+    <script src="kakusitter.js"></script>
+  </head>
+  <body>
+  	<h1>かくしったー</h1>
+  	<h2>ネタバレを防ぐためにツイートを暗号化したりそれを復号化したりできます。</h2>
+  	<h3>暗号化</h3>
+  	<h4>まずはツイートしたい文章を記入してください(99文字まで)。暗号化された箇所は《》で囲まれます。</h4>
+  	<textarea id="inputArea" cols="50" rows="10" maxlength="99"></textarea>
+  	<h4>次に、暗号化したい部分を指定してください。</h4>
+  	
+<div style="display: flex;">
+<table border="1" id ="texttable">
+<tr align="center">
+<td>変換前</td>
+<td>0</td>	
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr align="center">
+<td>0x</td>
+<td id="0">❌</td>
+<td id="1"></td>
+<td id="2"></td>
+<td id="3"></td>
+<td id="4"></td>
+<td id="5"></td>
+<td id="6"></td>
+<td id="7"></td>
+<td id="8"></td>
+<td id="9"></td>
+</tr>
+<tr align="center">
+<td>1x</td>
+<td id="10"></td>
+<td id="11"></td>
+<td id="12"></td>
+<td id="13"></td>
+<td id="14"></td>
+<td id="15"></td>
+<td id="16"></td>
+<td id="17"></td>
+<td id="18"></td>
+<td id="19"></td>
+
+</tr>
+<tr align="center">
+<td>2x</td>
+<td id="20"></td>
+<td id="21"></td>
+<td id="22"></td>
+<td id="23"></td>
+<td id="24"></td>
+<td id="25"></td>
+<td id="26"></td>
+<td id="27"></td>
+<td id="28"></td>
+<td id="29"></td>
+</tr>
+<tr align="center">
+<td>3x</td>
+<td id="30"></td>
+<td id="31"></td>
+<td id="32"></td>
+<td id="33"></td>
+<td id="34"></td>
+<td id="35"></td>
+<td id="36"></td>
+<td id="37"></td>
+<td id="38"></td>
+<td id="39"></td>
+</tr>
+<tr align="center">
+<td>4x</td>
+<td id="40"></td>
+<td id="41"></td>
+<td id="42"></td>
+<td id="43"></td>
+<td id="44"></td>
+<td id="45"></td>
+<td id="46"></td>
+<td id="47"></td>
+<td id="48"></td>
+<td id="49"></td>
+</tr>
+<tr align="center">
+<td>5x</td>
+<td id="50"></td>
+<td id="51"></td>
+<td id="52"></td>
+<td id="53"></td>
+<td id="54"></td>
+<td id="55"></td>
+<td id="56"></td>
+<td id="57"></td>
+<td id="58"></td>
+<td id="59"></td>
+</tr>
+<tr align="center">
+<td>6x</td>
+<td id="60"></td>
+<td id="61"></td>
+<td id="62"></td>
+<td id="63"></td>
+<td id="64"></td>
+<td id="65"></td>
+<td id="66"></td>
+<td id="67"></td>
+<td id="68"></td>
+<td id="69"></td>
+</tr>
+<tr align="center">
+<td>7x</td>
+<td id="70"></td>
+<td id="71"></td>
+<td id="72"></td>
+<td id="73"></td>
+<td id="74"></td>
+<td id="75"></td>
+<td id="76"></td>
+<td id="77"></td>
+<td id="78"></td>
+<td id="79"></td>
+</tr>
+<tr align="center">
+<td>8x</td>
+<td id="80"></td>
+<td id="81"></td>
+<td id="82"></td>
+<td id="83"></td>
+<td id="84"></td>
+<td id="85"></td>
+<td id="86"></td>
+<td id="87"></td>
+<td id="88"></td>
+<td id="89"></td>
+</tr>
+<tr align="center">
+<td>9x</td>
+<td id="90"></td>
+<td id="91"></td>
+<td id="92"></td>
+<td id="93"></td>
+<td id="94"></td>
+<td id="95"></td>
+<td id="96"></td>
+<td id="97"></td>
+<td id="98"></td>
+<td id="99"></td>
+</tr>
+</table>
+　
+　
+　
+<table border="1" id ="stexttable">
+<tr align="center">
+<td>変換後</td>
+<td>0</td>	
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr align="center">
+<td>0x</td>
+<td id="s0">❌</td>
+<td id="s1"></td>
+<td id="s2"></td>
+<td id="s3"></td>
+<td id="s4"></td>
+<td id="s5"></td>
+<td id="s6"></td>
+<td id="s7"></td>
+<td id="s8"></td>
+<td id="s9"></td>
+</tr>
+<tr align="center">
+<td>1x</td>
+<td id="s10"></td>
+<td id="s11"></td>
+<td id="s12"></td>
+<td id="s13"></td>
+<td id="s14"></td>
+<td id="s15"></td>
+<td id="s16"></td>
+<td id="s17"></td>
+<td id="s18"></td>
+<td id="s19"></td>
+
+</tr>
+<tr align="center">
+<td>2x</td>
+<td id="s20"></td>
+<td id="s21"></td>
+<td id="s22"></td>
+<td id="s23"></td>
+<td id="s24"></td>
+<td id="s25"></td>
+<td id="s26"></td>
+<td id="s27"></td>
+<td id="s28"></td>
+<td id="s29"></td>
+</tr>
+<tr align="center">
+<td>3x</td>
+<td id="s30"></td>
+<td id="s31"></td>
+<td id="s32"></td>
+<td id="s33"></td>
+<td id="s34"></td>
+<td id="s35"></td>
+<td id="s36"></td>
+<td id="s37"></td>
+<td id="s38"></td>
+<td id="s39"></td>
+</tr>
+<tr align="center">
+<td>4x</td>
+<td id="s40"></td>
+<td id="s41"></td>
+<td id="s42"></td>
+<td id="s43"></td>
+<td id="s44"></td>
+<td id="s45"></td>
+<td id="s46"></td>
+<td id="s47"></td>
+<td id="s48"></td>
+<td id="s49"></td>
+</tr>
+<tr align="center">
+<td>5x</td>
+<td id="s50"></td>
+<td id="s51"></td>
+<td id="s52"></td>
+<td id="s53"></td>
+<td id="s54"></td>
+<td id="s55"></td>
+<td id="s56"></td>
+<td id="s57"></td>
+<td id="s58"></td>
+<td id="s59"></td>
+</tr>
+<tr align="center">
+<td>6x</td>
+<td id="s60"></td>
+<td id="s61"></td>
+<td id="s62"></td>
+<td id="s63"></td>
+<td id="s64"></td>
+<td id="s65"></td>
+<td id="s66"></td>
+<td id="s67"></td>
+<td id="s68"></td>
+<td id="s69"></td>
+</tr>
+<tr align="center">
+<td>7x</td>
+<td id="s70"></td>
+<td id="s71"></td>
+<td id="s72"></td>
+<td id="s73"></td>
+<td id="s74"></td>
+<td id="s75"></td>
+<td id="s76"></td>
+<td id="s77"></td>
+<td id="s78"></td>
+<td id="s79"></td>
+</tr>
+<tr align="center">
+<td>8x</td>
+<td id="s80"></td>
+<td id="s81"></td>
+<td id="s82"></td>
+<td id="s83"></td>
+<td id="s84"></td>
+<td id="s85"></td>
+<td id="s86"></td>
+<td id="s87"></td>
+<td id="s88"></td>
+<td id="s89"></td>
+</tr>
+<tr align="center">
+<td>9x</td>
+<td id="s90"></td>
+<td id="s91"></td>
+<td id="s92"></td>
+<td id="s93"></td>
+<td id="s94"></td>
+<td id="s95"></td>
+<td id="s96"></td>
+<td id="s97"></td>
+<td id="s98"></td>
+<td id="s99"></td>
+</tr>
+</table>
+</div>
+
+<p><input type="text" id="start1" size="2" maxlength = "2">文字目～<input type="text" id="goal1" size="2" maxlength = "2">文字目</p>
+
+<h4>暗号化されたものが下に出力されます。</h4>
+
+<div id="outputArea" style="width: 300px;"></div>
+
+<h4>ツイートしましょう！</h4>
+<button onclick="twit()">ツイート</button>
+
+</body>
+</html>
